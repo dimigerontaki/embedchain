@@ -1,6 +1,7 @@
 import hashlib
 import json
 import logging
+from datetime import datetime
 
 try:
     from youtube_transcript_api import YouTubeTranscriptApi
@@ -30,6 +31,11 @@ class YoutubeVideoLoader(BaseLoader):
         content = clean_string(content)
         metadata = doc[0].metadata
         metadata["url"] = url
+
+        # Extract and format publication date and time
+        if "publish_date" in metadata:
+            publish_datetime = datetime.strptime(metadata["publish_date"], "%Y-%m-%d %H:%M:%S")
+            metadata["publish_date"] = publish_datetime.isoformat() + "Z"
 
         video_id = url.split("v=")[1].split("&")[0]
         try:
