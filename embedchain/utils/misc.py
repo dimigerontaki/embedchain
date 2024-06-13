@@ -217,6 +217,10 @@ def detect_datatype(source: Any) -> DataType:
             logger.debug(f"Source of `{formatted_source}` detected as `notion`.")
             return DataType.NOTION
 
+        if url.netloc.endswith("wikipedia.org"):
+            logger.debug(f"Source of `{formatted_source}` detected as `notion`.")
+            return DataType.WIKIPEDIA
+
         if url.path.endswith(".pdf"):
             logger.debug(f"Source of `{formatted_source}` detected as `pdf_file`.")
             return DataType.PDF_FILE

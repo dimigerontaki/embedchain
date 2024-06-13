@@ -81,6 +81,7 @@ class DataFormatter(JSONSerializable):
             DataType.DROPBOX: "embedchain.loaders.dropbox.DropboxLoader",
             DataType.TEXT_FILE: "embedchain.loaders.text_file.TextFileLoader",
             DataType.EXCEL_FILE: "embedchain.loaders.excel_file.ExcelFileLoader",
+            DataType.WIKIPEDIA: "embedchain.loaders.wikipedia.WikipediaLoader",
         }
 
         if data_type == DataType.CUSTOM or loader is not None:
@@ -129,6 +130,7 @@ class DataFormatter(JSONSerializable):
             DataType.DROPBOX: "embedchain.chunkers.common_chunker.CommonChunker",
             DataType.TEXT_FILE: "embedchain.chunkers.common_chunker.CommonChunker",
             DataType.EXCEL_FILE: "embedchain.chunkers.excel_file.ExcelFileChunker",
+            DataType.WIKIPEDIA: "embedchain.chunkers.wikipedia.WikipediaChunker",
         }
 
         if chunker is not None:
